@@ -10,7 +10,7 @@ ENV MAINFLUX_MQTT_PORT=1883
 
 RUN apt-get update -qq && apt-get install -y build-essential
 
-RUN mkdir -p /mainflux/mqttServer
+RUN mkdir /mainflux-mqtt
 
 ###
 # Installations
@@ -21,8 +21,8 @@ RUN npm install -g gulp
 RUN npm install -g nodemon
 
 # Finally, install all project Node modules
-COPY . /mainflux/mqttServer
-WORKDIR /mainflux/mqttServer
+COPY . /mainflux-mqtt
+WORKDIR /mainflux-mqtt
 RUN npm install
 
 EXPOSE $MAINFLUX_MQTT_PORT
